@@ -1,22 +1,10 @@
 # selenium-test-project
 
-### How this template was created
-This template was generated with following command:
-```
-mvn archetype:generate -DgroupId=com.mycompany.selenium -DartifactId=selenium-test-project -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
-```
-Afterwards, following was added:
-* Selenium and TestNg dependencies into pom.xml
-* .gitignore file for not git tracking unnecessary files, which we don\`t want to commit
-* Test resources folder into _src/test_. Also marked as "Test Resources" in IDEA
-* Added drivers into _src/test/resources_ folder. **NOTE** - it might be needed to update the driver versions
-
 ### Homework Description
 In order to complete this homework you will need to
 1. Create a fork from my repo (https://guides.github.com/activities/forking/) - this will create a copy of this project in your GitHub account
 2. Complete Task 1
 3. Create a Pull Request for my original project (https://help.github.com/articles/creating-a-pull-request-from-a-fork/) - this will enable to easily review your code in GitHub
-
 
 ### Task 1:
 1. Открыть браузер и развернуть на весь экран.
@@ -43,3 +31,13 @@ In order to complete this homework you will need to
 2. Try to use CSS Selectors instead of XPath
 ---
 
+### How this template was created
+This template was generated with following command:
+```
+mvn archetype:generate -DgroupId=com.mycompany.selenium -DartifactId=selenium-test-project -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+```
+Afterwards, following was added:
+* Selenium and TestNg dependencies into pom.xml
+* .gitignore file for not git tracking unnecessary files, which we don\`t want to commit
+* Test resources folder into _src/test_. Also marked as "Test Resources" in IDEA
+* Added drivers into _src/test/resources_ folder. **NOTE** - it might be needed to update the driver versions
