@@ -11,9 +11,14 @@ Afterwards, following was added:
 * Test resources folder into _src/test_. Also marked as "Test Resources" in IDEA
 * Added drivers into _src/test/resources_ folder. **NOTE** - it might be needed to update the driver versions
 
+### Homework Description
+In order to complete this homework you will need to
+1. Create a fork from my repo (https://guides.github.com/activities/forking/) - this will create a copy of this project in your GitHub account
+2. Complete Task 1
+3. Create a Pull Request for my original project (https://help.github.com/articles/creating-a-pull-request-from-a-fork/) - this will enable to easily review your code in GitHub
 
 
-### Task:
+### Task 1:
 1. Открыть браузер и развернуть на весь экран.
 2. Зайти на ss.com.
 3. Поменять язык на русский.
@@ -23,7 +28,7 @@ Afterwards, following was added:
 7. удостовериться что отображается хотя бы одно объявление
 
 ---
-
+### Task 2:
 8. Отсортировать результаты по цене и выбрать закладку ‘продажа’.
 9. Зайти в расширенный поиск.
 10. Задать параметр поиска по цене от 0 до 300.
