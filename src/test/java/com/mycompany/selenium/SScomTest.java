@@ -209,14 +209,28 @@ public class SScomTest {
         transactionTypeDropdown.selectByVisibleText("Продажа");
 
         List<WebElement> checkboxList = driver.findElements(By.cssSelector("[type='checkbox']"));
-        checkboxList.get(1).click();
-        checkboxList.get(2).click();
-        checkboxList.get(4).click();
+        List<WebElement> checkboxToClickList = new ArrayList<WebElement>();
+        checkboxToClickList.add(checkboxList.get(1));
+        checkboxToClickList.add(checkboxList.get(2));
+        checkboxToClickList.add(checkboxList.get(4));
+
+        for (WebElement checkboxToClick: checkboxToClickList) {
+            checkboxToClick.click();
+        }
+
+//        checkboxList.get(1).click();
+//        checkboxList.get(2).click();
+//        checkboxList.get(4).click();
 
         List<String> checkedCheckboxIdList = new ArrayList<String>();
-        checkedCheckboxIdList.add(checkboxList.get(1).getAttribute("id"));
-        checkedCheckboxIdList.add(checkboxList.get(2).getAttribute("id"));
-        checkedCheckboxIdList.add(checkboxList.get(4).getAttribute("id"));
+        for (WebElement checkboxToClick: checkboxToClickList) {
+            shownCheckboxIdList.add(new String(shownCheckbox.getAttribute("id")));
+        }
+
+
+//        checkedCheckboxIdList.add(checkboxList.get(1).getAttribute("id"));
+//        checkedCheckboxIdList.add(checkboxList.get(2).getAttribute("id"));
+//        checkedCheckboxIdList.add(checkboxList.get(4).getAttribute("id"));
 
         Collections.sort(checkedCheckboxIdList);
         //System.out.println(checkedCheckboxIdList);
