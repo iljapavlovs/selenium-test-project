@@ -4,23 +4,22 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.util.*;
+import java.math.BigDecimal;
+import java.util.List;
+
+import static org.testng.Assert.assertTrue;
+
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
-import static org.testng.Assert.assertTrue;
 
 public class SScomTest {
 
@@ -209,38 +208,51 @@ public class SScomTest {
         Select transactionTypeDropdown = new Select(driver.findElement(By.cssSelector(".filter_second_line_dv>span:nth-child(3)>select")));
         transactionTypeDropdown.selectByVisibleText("Продажа");
 
-
-
-        List<WebElement> descriptionList = driver.findElements(By.className(".am"));
-        WebElement[] selectedDescriptionList = {descriptionList.get(1), descriptionList.get(2), descriptionList.get(4)};
-
-
-//        List <String> selectedDescriptionList = new ArrayList<String>();
-//        for (WebElement description: selectedDescriptionList) {
-//            selectedDescriptionList.add(new String(description.getText()));
-//        }
-
-        System.out.println(selectedDescriptionList);
         List<WebElement> checkboxList = driver.findElements(By.cssSelector("[type='checkbox']"));
         checkboxList.get(1).click();
         checkboxList.get(2).click();
         checkboxList.get(4).click();
 
+        List<String> checkedCheckboxIdList = new ArrayList<String>();
+        checkedCheckboxIdList.add(checkboxList.get(1).getAttribute("id"));
+        checkedCheckboxIdList.add(checkboxList.get(2).getAttribute("id"));
+        checkedCheckboxIdList.add(checkboxList.get(4).getAttribute("id"));
+
+        Collections.sort(checkedCheckboxIdList);
+        //System.out.println(checkedCheckboxIdList);
+
+        WebElement showSelectedLink = driver.findElement(By.cssSelector("#show_selected_a"));
+        Robot robot = null;
         try {
-            Thread.sleep(5000);
+            robot = new Robot();
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
+
+        robot.keyPress(KeyEvent.VK_END);
+        robot.keyRelease(KeyEvent.VK_END);
+
+//        WebDriverWait wait = new WebDriverWait(driver, 5);
+//        wait.until(ExpectedConditions.visibilityOf(showSelectedLink));
+
+
+        try {
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        WebElement showSelectedLink = driver.findElement(By.cssSelector("#show_selected_a"));
-        Actions action = new Actions(driver);
-        action.moveToElement(showSelectedLink).click().perform();
-        //showSelectedLink.click();
-        List<WebElement> descriptionListShown = driver.findElements(By.className("am"));
+        showSelectedLink.click();
 
-        System.out.println(descriptionListShown);
-        //Assert.assertEquals(selectedDescriptionList, descriptionListShown);
+        List<WebElement> shownCheckboxList = driver.findElements(By.cssSelector("[type='checkbox']"));
+        List <String> shownCheckboxIdList = new ArrayList<String>();
+        for (WebElement shownCheckbox: shownCheckboxList) {
+            shownCheckboxIdList.add(new String(shownCheckbox.getAttribute("id")));
+        }
+        Collections.sort(shownCheckboxIdList);
+        //System.out.println(shownCheckboxIdList);
 
+        Assert.assertEquals(checkedCheckboxIdList, shownCheckboxIdList);
 
     }
 
