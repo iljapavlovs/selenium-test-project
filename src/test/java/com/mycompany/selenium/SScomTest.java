@@ -4,20 +4,23 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
-import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.util.*;
-import java.math.BigDecimal;
-import java.util.List;
-import static org.testng.Assert.assertTrue;
-import org.testng.Assert;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import static org.testng.Assert.assertTrue;
 
 public class SScomTest {
 
@@ -167,7 +170,7 @@ public class SScomTest {
         for (WebElement checkboxToClick: checkboxToClickList) {
             checkboxToClick.click();
         }
-        
+
         WebElement selectedCounter = driver.findElement(By.id("sel_cnt_obj"));
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOf(selectedCounter));
@@ -230,8 +233,7 @@ public class SScomTest {
         for (WebElement checkboxToClick: checkboxToClickList) {
             checkedCheckboxIdList.add(new String(checkboxToClick.getAttribute("id")));
         }
-
-
+        
         Collections.sort(checkedCheckboxIdList);
         //System.out.println(checkedCheckboxIdList);
 
