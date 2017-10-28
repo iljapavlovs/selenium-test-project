@@ -157,10 +157,17 @@ public class SScomTest {
         Select transactionTypeDropdown = new Select(driver.findElement(By.cssSelector(".filter_second_line_dv>span:nth-child(3)>select")));
         transactionTypeDropdown.selectByVisibleText("Продажа");
 
-        List<WebElement> checkboxList = driver.findElements(By.cssSelector("[type='checkbox']"));
-        checkboxList.get(1).click();
-        checkboxList.get(2).click();
-        checkboxList.get(4).click();
+        final List<WebElement> checkboxList = driver.findElements(By.cssSelector("[type='checkbox']"));
+        List<WebElement> checkboxToClickList = new ArrayList<WebElement>(){
+            {
+                add(checkboxList.get(1));add(checkboxList.get(2)); add(checkboxList.get(4));
+            }
+        };
+
+        for (WebElement checkboxToClick: checkboxToClickList) {
+            checkboxToClick.click();
+        }
+        
         WebElement selectedCounter = driver.findElement(By.id("sel_cnt_obj"));
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOf(selectedCounter));
@@ -208,29 +215,22 @@ public class SScomTest {
         Select transactionTypeDropdown = new Select(driver.findElement(By.cssSelector(".filter_second_line_dv>span:nth-child(3)>select")));
         transactionTypeDropdown.selectByVisibleText("Продажа");
 
-        List<WebElement> checkboxList = driver.findElements(By.cssSelector("[type='checkbox']"));
-        List<WebElement> checkboxToClickList = new ArrayList<WebElement>();
-        checkboxToClickList.add(checkboxList.get(1));
-        checkboxToClickList.add(checkboxList.get(2));
-        checkboxToClickList.add(checkboxList.get(4));
+        final List<WebElement> checkboxList = driver.findElements(By.cssSelector("[type='checkbox']"));
+        List<WebElement> checkboxToClickList = new ArrayList<WebElement>(){
+            {
+                add(checkboxList.get(1));add(checkboxList.get(2)); add(checkboxList.get(4));
+            }
+        };
 
         for (WebElement checkboxToClick: checkboxToClickList) {
             checkboxToClick.click();
         }
 
-//        checkboxList.get(1).click();
-//        checkboxList.get(2).click();
-//        checkboxList.get(4).click();
-
         List<String> checkedCheckboxIdList = new ArrayList<String>();
         for (WebElement checkboxToClick: checkboxToClickList) {
-            shownCheckboxIdList.add(new String(shownCheckbox.getAttribute("id")));
+            checkedCheckboxIdList.add(new String(checkboxToClick.getAttribute("id")));
         }
 
-
-//        checkedCheckboxIdList.add(checkboxList.get(1).getAttribute("id"));
-//        checkedCheckboxIdList.add(checkboxList.get(2).getAttribute("id"));
-//        checkedCheckboxIdList.add(checkboxList.get(4).getAttribute("id"));
 
         Collections.sort(checkedCheckboxIdList);
         //System.out.println(checkedCheckboxIdList);
@@ -246,10 +246,11 @@ public class SScomTest {
         robot.keyPress(KeyEvent.VK_END);
         robot.keyRelease(KeyEvent.VK_END);
 
+//        THIS DID NOT HELP. Why?...
 //        WebDriverWait wait = new WebDriverWait(driver, 5);
 //        wait.until(ExpectedConditions.visibilityOf(showSelectedLink));
 
-
+//        Only this helped :-(
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
