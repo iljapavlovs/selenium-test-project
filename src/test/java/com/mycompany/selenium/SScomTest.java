@@ -162,6 +162,8 @@ public class SScomTest {
         checkboxList.get(2).click();
         checkboxList.get(4).click();
         WebElement selectedCounter = driver.findElement(By.id("sel_cnt_obj"));
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.visibilityOf(selectedCounter));
         Assert.assertEquals(selectedCounter.getText().substring(1, 2), "3");
     }
 
