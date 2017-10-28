@@ -229,12 +229,12 @@ public class SScomTest {
             checkboxToClick.click();
         }
 
-        List<String> checkedCheckboxIdList = new ArrayList<String>();
+        List<String> checkedCheckboxToClickIdList = new ArrayList<String>();
         for (WebElement checkboxToClick: checkboxToClickList) {
-            checkedCheckboxIdList.add(new String(checkboxToClick.getAttribute("id")));
+            checkedCheckboxToClickIdList.add(new String(checkboxToClick.getAttribute("id")));
         }
-        
-        Collections.sort(checkedCheckboxIdList);
+
+        Collections.sort(checkedCheckboxToClickIdList);
         //System.out.println(checkedCheckboxIdList);
 
         WebElement showSelectedLink = driver.findElement(By.cssSelector("#show_selected_a"));
@@ -269,7 +269,7 @@ public class SScomTest {
         Collections.sort(shownCheckboxIdList);
         //System.out.println(shownCheckboxIdList);
 
-        Assert.assertEquals(checkedCheckboxIdList, shownCheckboxIdList);
+        Assert.assertEquals(checkedCheckboxToClickIdList, shownCheckboxIdList);
 
     }
 
