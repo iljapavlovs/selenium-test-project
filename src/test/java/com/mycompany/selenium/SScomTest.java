@@ -73,9 +73,9 @@ public class SScomTest {
 
         WebElement searchBtn = driver.findElement(By.id("sbtn"));
         searchBtn.submit();
-
-        List<WebElement> checkboxList = driver.findElements(By.cssSelector("[type='checkbox']"));
-        assertTrue (checkboxList.get(0).isDisplayed());
+        
+        List<WebElement> priceList = driver.findElements(By.cssSelector("a.amopt"));
+        assertTrue(priceList.get(0).isDisplayed());
 
     }
 
