@@ -1,4 +1,5 @@
 package com.mycompany.selenium;
+//do I need to do a new pull request if I made some changes after my first pull request?
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -229,13 +230,13 @@ public class SScomTest {
             checkboxToClick.click();
         }
 
-        List<String> checkedCheckboxToClickIdList = new ArrayList<String>();
+        List<String> checkboxToClickIdList = new ArrayList<String>();
         for (WebElement checkboxToClick: checkboxToClickList) {
-            checkedCheckboxToClickIdList.add(new String(checkboxToClick.getAttribute("id")));
+            checkboxToClickIdList.add(new String(checkboxToClick.getAttribute("id")));
         }
 
-        Collections.sort(checkedCheckboxToClickIdList);
-        //System.out.println(checkedCheckboxIdList);
+        Collections.sort(checkboxToClickIdList);
+        //System.out.println(checkboxToClickIdList);
 
         WebElement showSelectedLink = driver.findElement(By.cssSelector("#show_selected_a"));
         Robot robot = null;
@@ -269,7 +270,7 @@ public class SScomTest {
         Collections.sort(shownCheckboxIdList);
         //System.out.println(shownCheckboxIdList);
 
-        Assert.assertEquals(checkedCheckboxToClickIdList, shownCheckboxIdList);
+        Assert.assertEquals(checkboxToClickIdList, shownCheckboxIdList);
 
     }
 
