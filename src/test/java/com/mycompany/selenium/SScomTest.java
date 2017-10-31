@@ -32,7 +32,7 @@ public class SScomTest {
 
     @BeforeClass
     public void globalSetUp() throws Exception {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver-v2.30-win32/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver-v2.33-win32/chromedriver.exe");
     }
 
     @BeforeMethod
@@ -58,17 +58,19 @@ public class SScomTest {
         languageBarRU.click();
 
         WebElement languageBarLV = driver.findElement(By.cssSelector("[title='Latviski']"));
+        assertTrue(driver.getTitle().equals("Объявления - SS.COM"));
         assertTrue(languageBarLV.isDisplayed());
     }
 
     @Test
-    public void testLanguageChangeLVtoRUtoLT() {
+    public void testLanguageChangeLVtoRUtoLV() {
         WebElement languageBarRU = driver.findElement(By.cssSelector("[title='По-русски']"));
         languageBarRU.click();
 
         WebElement languageBarLV = driver.findElement(By.cssSelector("[title='Latviski']"));
         languageBarLV.click();
 
+        assertTrue(driver.getTitle().equals("Sludinājumi - SS.COM"));
         assertTrue(languageBarRU.isDisplayed());
     }
 
