@@ -75,6 +75,9 @@ public class SScomTest {
 
         WebElement extSearchBtn = driver.findElement(By.id("sbtn"));
         extSearchBtn.submit();
+
+        /** ".click()" doesn't work. Why?...
+         */
     }
 
     public void sortByPriceDesc() {
