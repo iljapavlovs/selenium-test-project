@@ -1,5 +1,8 @@
 package com.mycompany.selenium;
-//do I need to do a new pull request if I made some changes after my first pull request?
+
+/**
+ * do I need to do a new pull request if I made some changes after my first pull request?
+ */
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -73,7 +76,7 @@ public class SScomTest {
 
         WebElement searchBtn = driver.findElement(By.id("sbtn"));
         searchBtn.submit();
-        
+
         List<WebElement> priceList = driver.findElements(By.cssSelector("a.amopt"));
         assertTrue(priceList.get(0).isDisplayed());
 
