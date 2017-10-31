@@ -11,7 +11,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -24,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class SScomTest {
@@ -47,14 +47,29 @@ public class SScomTest {
         driver.quit();
     }
 
+    @Test
+    public void testDefaultLanguage() {
+        assertTrue(driver.getTitle().equals("Sludinājumi - SS.COM"));
+    }
 
     @Test
-    public void testLanguageChange() {
+    public void testLanguageChangeLVtoRU() {
         WebElement languageBarRU = driver.findElement(By.cssSelector("[title='По-русски']"));
         languageBarRU.click();
 
         WebElement languageBarLV = driver.findElement(By.cssSelector("[title='Latviski']"));
-        Assert.assertTrue(languageBarLV.isDisplayed());
+        assertTrue(languageBarLV.isDisplayed());
+    }
+
+    @Test
+    public void testLanguageChangeLVtoRUtoLT() {
+        WebElement languageBarRU = driver.findElement(By.cssSelector("[title='По-русски']"));
+        languageBarRU.click();
+
+        WebElement languageBarLV = driver.findElement(By.cssSelector("[title='Latviski']"));
+        languageBarLV.click();
+
+        assertTrue(languageBarRU.isDisplayed());
     }
 
     @Test
@@ -120,7 +135,7 @@ public class SScomTest {
         //System.out.println(sortedBySite);
         Collections.sort(priceValuesList, Collections.reverseOrder());
         //System.out.println(priceValuesList);
-        Assert.assertEquals(pricesSortedBySiteDesc, priceValuesList);
+        assertEquals(pricesSortedBySiteDesc, priceValuesList);
     }
 
     @Test
@@ -178,7 +193,7 @@ public class SScomTest {
         WebElement selectedCounter = driver.findElement(By.id("sel_cnt_obj"));
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOf(selectedCounter));
-        Assert.assertEquals(selectedCounter.getText().substring(1, 2), "3");
+        assertEquals(selectedCounter.getText().substring(1, 2), "3");
     }
 
     @Test
@@ -273,7 +288,7 @@ public class SScomTest {
         Collections.sort(shownCheckboxIdList);
         //System.out.println(shownCheckboxIdList);
 
-        Assert.assertEquals(checkboxToClickIdList, shownCheckboxIdList);
+        assertEquals(checkboxToClickIdList, shownCheckboxIdList);
 
     }
 
