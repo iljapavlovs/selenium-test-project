@@ -1,9 +1,5 @@
 package com.mycompany.selenium;
 
-/**
- * do I need to do a new pull request if I made some changes after my first pull request?
- */
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -47,6 +43,68 @@ public class SScomTest {
         driver.quit();
     }
 
+    private void basicSearch() {
+        WebElement languageBarRU = driver.findElement(By.cssSelector("[title='По-русски']"));
+        languageBarRU.click();
+
+        WebElement searchBar = driver.findElement(By.cssSelector("[title='Искать объявления']"));
+        searchBar.click();
+
+        WebElement searchField = driver.findElement(By.name("txt"));
+        searchField.sendKeys("Компьютер");
+
+        Select divisionDropdown = new Select(driver.findElement(By.name("cid_0")));
+        divisionDropdown.selectByVisibleText("Электротехника");
+
+        Select categoryDropdown = new Select(driver.findElement(By.name("cid_1")));
+        categoryDropdown.selectByVisibleText("Компьютеры, оргтехника");
+
+        WebElement searchBtn = driver.findElement(By.id("sbtn"));
+        searchBtn.submit();
+    }
+
+    private void extendedSearch() {
+        WebElement extendedSearchLink = driver.findElement(By.cssSelector("a.a9a"));
+        extendedSearchLink.click();
+
+        WebElement minPriceInput = driver.findElement(By.name("topt[8][min]"));
+        minPriceInput.sendKeys("0");
+
+        WebElement maxPriceInput = driver.findElement(By.name("topt[8][max]"));
+        maxPriceInput.sendKeys("300");
+
+        WebElement extSearchBtn = driver.findElement(By.id("sbtn"));
+        extSearchBtn.submit();
+    }
+
+    private void sortByPriceDesc() {
+        WebElement priceBar1 = driver.findElement(By.linkText("Цена"));
+        priceBar1.click();
+
+        WebElement priceBar2 = driver.findElement(By.linkText("Цена"));
+        priceBar2.click();
+    }
+
+    private void setTransactionType() {
+        Select transactionTypeDropdown = new Select(driver.findElement(By.cssSelector(".filter_second_line_dv>span:nth-child(3)>select")));
+        transactionTypeDropdown.selectByVisibleText("Продажа");
+    }
+
+    private  List<WebElement> clickOnCheckboxes() {
+        final List<WebElement> checkboxList = driver.findElements(By.cssSelector("[type='checkbox']"));
+        List<WebElement> checkboxToClickList = new ArrayList<WebElement>(){
+            {
+                add(checkboxList.get(1));add(checkboxList.get(2)); add(checkboxList.get(4));
+            }
+        };
+
+        for (WebElement checkboxToClick: checkboxToClickList) {
+            checkboxToClick.click();
+        }
+        return checkboxToClickList;
+    }
+
+
     @Test
     public void testDefaultLanguage() {
         assertTrue(driver.getTitle().equals("Sludinājumi - SS.COM"));
@@ -76,55 +134,17 @@ public class SScomTest {
 
     @Test
     public void testSearch() {
-        WebElement languageBarRU = driver.findElement(By.cssSelector("[title='По-русски']"));
-        languageBarRU.click();
-
-        WebElement searchBar = driver.findElement(By.cssSelector("[title='Искать объявления']"));
-        searchBar.click();
-
-        WebElement searchField = driver.findElement(By.name("txt"));
-        searchField.sendKeys("Компьютер");
-
-        Select divisionDropdown = new Select(driver.findElement(By.name("cid_0")));
-        divisionDropdown.selectByVisibleText("Электротехника");
-
-        Select categoryDropdown = new Select(driver.findElement(By.name("cid_1")));
-        categoryDropdown.selectByVisibleText("Компьютеры, оргтехника");
-
-        WebElement searchBtn = driver.findElement(By.id("sbtn"));
-        searchBtn.submit();
+        basicSearch();
 
         List<WebElement> priceList = driver.findElements(By.cssSelector("a.amopt"));
         assertTrue(priceList.get(0).isDisplayed());
 
     }
 
-
     @Test
     public void testSortResultsByPriceDesc() {
-        WebElement languageBarRU = driver.findElement(By.cssSelector("[title='По-русски']"));
-        languageBarRU.click();
-
-        WebElement searchBar = driver.findElement(By.cssSelector("[title='Искать объявления']"));
-        searchBar.click();
-
-        WebElement searchField = driver.findElement(By.name("txt"));
-        searchField.sendKeys("Компьютер");
-
-        Select divisionDropdown = new Select(driver.findElement(By.name("cid_0")));
-        divisionDropdown.selectByVisibleText("Электротехника");
-
-        Select categoryDropdown = new Select(driver.findElement(By.name("cid_1")));
-        categoryDropdown.selectByVisibleText("Компьютеры, оргтехника");
-
-        WebElement searchBtn = driver.findElement(By.id("sbtn"));
-        searchBtn.submit();
-
-        WebElement priceBar1 = driver.findElement(By.linkText("Цена"));
-        priceBar1.click();
-
-        WebElement priceBar2 = driver.findElement(By.linkText("Цена"));
-        priceBar2.click();
+        basicSearch();
+        sortByPriceDesc();
 
         List<WebElement> priceList2 = driver.findElements(By.cssSelector("a.amopt"));
         List <BigDecimal> priceValuesList = new ArrayList<BigDecimal>();
@@ -142,55 +162,11 @@ public class SScomTest {
 
     @Test
     public void testExtendedSearchShow3Count() {
-        WebElement languageBarRU = driver.findElement(By.cssSelector("[title='По-русски']"));
-        languageBarRU.click();
-
-        WebElement searchBar = driver.findElement(By.cssSelector("[title='Искать объявления']"));
-        searchBar.click();
-
-        WebElement searchField = driver.findElement(By.name("txt"));
-        searchField.sendKeys("Компьютер");
-
-        Select divisionDropdown = new Select(driver.findElement(By.name("cid_0")));
-        divisionDropdown.selectByVisibleText("Электротехника");
-
-        Select categoryDropdown = new Select(driver.findElement(By.name("cid_1")));
-        categoryDropdown.selectByVisibleText("Компьютеры, оргтехника");
-
-        WebElement searchBtn = driver.findElement(By.id("sbtn"));
-        searchBtn.submit();
-
-        WebElement extendedSearchLink = driver.findElement(By.cssSelector("a.a9a"));
-        extendedSearchLink.click();
-
-        WebElement minPriceInput = driver.findElement(By.name("topt[8][min]"));
-        minPriceInput.sendKeys("0");
-
-        WebElement maxPriceInput = driver.findElement(By.name("topt[8][max]"));
-        maxPriceInput.sendKeys("300");
-
-        WebElement extSearchBtn = driver.findElement(By.id("sbtn"));
-        extSearchBtn.submit();
-
-        WebElement priceBar1 = driver.findElement(By.linkText("Цена"));
-        priceBar1.click();
-
-        WebElement priceBar2 = driver.findElement(By.linkText("Цена"));
-        priceBar2.click();
-
-        Select transactionTypeDropdown = new Select(driver.findElement(By.cssSelector(".filter_second_line_dv>span:nth-child(3)>select")));
-        transactionTypeDropdown.selectByVisibleText("Продажа");
-
-        final List<WebElement> checkboxList = driver.findElements(By.cssSelector("[type='checkbox']"));
-        List<WebElement> checkboxToClickList = new ArrayList<WebElement>(){
-            {
-                add(checkboxList.get(1));add(checkboxList.get(2)); add(checkboxList.get(4));
-            }
-        };
-
-        for (WebElement checkboxToClick: checkboxToClickList) {
-            checkboxToClick.click();
-        }
+        basicSearch();
+        extendedSearch();
+        sortByPriceDesc();
+        setTransactionType();
+        clickOnCheckboxes();
 
         WebElement selectedCounter = driver.findElement(By.id("sel_cnt_obj"));
         WebDriverWait wait = new WebDriverWait(driver, 5);
@@ -200,55 +176,11 @@ public class SScomTest {
 
     @Test
     public void testExtendedSearchShow3Ads() {
-        WebElement languageBarRU = driver.findElement(By.cssSelector("[title='По-русски']"));
-        languageBarRU.click();
-
-        WebElement searchBar = driver.findElement(By.cssSelector("[title='Искать объявления']"));
-        searchBar.click();
-
-        WebElement searchField = driver.findElement(By.name("txt"));
-        searchField.sendKeys("Компьютер");
-
-        Select divisionDropdown = new Select(driver.findElement(By.name("cid_0")));
-        divisionDropdown.selectByVisibleText("Электротехника");
-
-        Select categoryDropdown = new Select(driver.findElement(By.name("cid_1")));
-        categoryDropdown.selectByVisibleText("Компьютеры, оргтехника");
-
-        WebElement searchBtn = driver.findElement(By.id("sbtn"));
-        searchBtn.submit();
-
-        WebElement extendedSearchLink = driver.findElement(By.cssSelector("a.a9a"));
-        extendedSearchLink.click();
-
-        WebElement minPriceInput = driver.findElement(By.name("topt[8][min]"));
-        minPriceInput.sendKeys("0");
-
-        WebElement maxPriceInput = driver.findElement(By.name("topt[8][max]"));
-        maxPriceInput.sendKeys("300");
-
-        WebElement extSearchBtn = driver.findElement(By.id("sbtn"));
-        extSearchBtn.submit();
-
-        WebElement priceBar1 = driver.findElement(By.linkText("Цена"));
-        priceBar1.click();
-
-        WebElement priceBar2 = driver.findElement(By.linkText("Цена"));
-        priceBar2.click();
-
-        Select transactionTypeDropdown = new Select(driver.findElement(By.cssSelector(".filter_second_line_dv>span:nth-child(3)>select")));
-        transactionTypeDropdown.selectByVisibleText("Продажа");
-
-        final List<WebElement> checkboxList = driver.findElements(By.cssSelector("[type='checkbox']"));
-        List<WebElement> checkboxToClickList = new ArrayList<WebElement>(){
-            {
-                add(checkboxList.get(1));add(checkboxList.get(2)); add(checkboxList.get(4));
-            }
-        };
-
-        for (WebElement checkboxToClick: checkboxToClickList) {
-            checkboxToClick.click();
-        }
+        basicSearch();
+        extendedSearch();
+        sortByPriceDesc();
+        setTransactionType();
+        List<WebElement> checkboxToClickList = clickOnCheckboxes();
 
         List<String> checkboxToClickIdList = new ArrayList<String>();
         for (WebElement checkboxToClick: checkboxToClickList) {
