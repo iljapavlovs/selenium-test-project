@@ -135,11 +135,11 @@ public class SScomTest {
     }
 
     @Test
-    public void testSearch() {
+    public void testSimpleSearch() {
         basicSearch();
 
-        List<WebElement> priceList = driver.findElements(By.cssSelector("a.amopt"));
-        assertTrue(priceList.get(0).isDisplayed());
+        List<WebElement> resultPriceList = driver.findElements(By.cssSelector("a.amopt"));
+        assertTrue(resultPriceList.get(0).isDisplayed());
 
     }
 
@@ -148,10 +148,10 @@ public class SScomTest {
         basicSearch();
         sortByPriceDesc();
 
-        List<WebElement> priceList2 = driver.findElements(By.cssSelector("a.amopt"));
+        List<WebElement> priceSortedDescList = driver.findElements(By.cssSelector("a.amopt"));
         List <BigDecimal> priceValuesList = new ArrayList<BigDecimal>();
 
-        for (WebElement price: priceList2) {
+        for (WebElement price : priceSortedDescList) {
         priceValuesList.add(new BigDecimal(price.getText().substring(0, price.getText().length() - 2).replaceAll(",","")));
         }
 
