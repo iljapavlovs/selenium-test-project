@@ -43,7 +43,7 @@ public class SScomTest {
         driver.quit();
     }
 
-    private void basicSearch() {
+    public void basicSearch() {
         WebElement languageBarRU = driver.findElement(By.cssSelector("[title='По-русски']"));
         languageBarRU.click();
 
@@ -63,7 +63,7 @@ public class SScomTest {
         searchBtn.submit();
     }
 
-    private void extendedSearch() {
+    public void extendedSearch() {
         WebElement extendedSearchLink = driver.findElement(By.cssSelector("a.a9a"));
         extendedSearchLink.click();
 
@@ -77,7 +77,7 @@ public class SScomTest {
         extSearchBtn.submit();
     }
 
-    private void sortByPriceDesc() {
+    public void sortByPriceDesc() {
         WebElement priceBar1 = driver.findElement(By.linkText("Цена"));
         priceBar1.click();
 
@@ -85,12 +85,12 @@ public class SScomTest {
         priceBar2.click();
     }
 
-    private void setTransactionType() {
+    public void setTransactionType() {
         Select transactionTypeDropdown = new Select(driver.findElement(By.cssSelector(".filter_second_line_dv>span:nth-child(3)>select")));
         transactionTypeDropdown.selectByVisibleText("Продажа");
     }
 
-    private  List<WebElement> clickOnCheckboxes() {
+    public List<WebElement> clickOnCheckboxes() {
         final List<WebElement> checkboxList = driver.findElements(By.cssSelector("[type='checkbox']"));
         List<WebElement> checkboxToClickList = new ArrayList<WebElement>(){
             {
@@ -101,6 +101,7 @@ public class SScomTest {
         for (WebElement checkboxToClick: checkboxToClickList) {
             checkboxToClick.click();
         }
+
         return checkboxToClickList;
     }
 
@@ -122,14 +123,15 @@ public class SScomTest {
 
     @Test
     public void testLanguageChangeLVtoRUtoLV() {
-        WebElement languageBarRU = driver.findElement(By.cssSelector("[title='По-русски']"));
-        languageBarRU.click();
+        WebElement languageBarRU1 = driver.findElement(By.cssSelector("[title='По-русски']"));
+        languageBarRU1.click();
 
         WebElement languageBarLV = driver.findElement(By.cssSelector("[title='Latviski']"));
         languageBarLV.click();
 
+        WebElement languageBarRU2 = driver.findElement(By.cssSelector("[title='По-русски']"));
+        assertTrue(languageBarRU2.isDisplayed());
         assertTrue(driver.getTitle().equals("Sludinājumi - SS.COM"));
-        assertTrue(languageBarRU.isDisplayed());
     }
 
     @Test
@@ -201,11 +203,13 @@ public class SScomTest {
         robot.keyPress(KeyEvent.VK_END);
         robot.keyRelease(KeyEvent.VK_END);
 
-//        THIS DID NOT HELP. Why?...
+/**       THIS DID NOT HELP. Why?...
+ */
 //        WebDriverWait wait = new WebDriverWait(driver, 5);
 //        wait.until(ExpectedConditions.visibilityOf(showSelectedLink));
 
-//        Only this helped :-(
+/**        Only this helped :-(
+ */
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
