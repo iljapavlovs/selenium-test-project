@@ -144,6 +144,9 @@ public class SScomTest {
         List<WebElement> resultPriceList = driver.findElements(By.cssSelector("a.amopt"));
         assertTrue(resultPriceList.get(0).isDisplayed());
 
+        List<WebElement> resultList = driver.findElements(By.xpath("//tr[contains(@id,'tr_') and not(contains(@id,'tr_bnr'))]"));
+        assertTrue(resultList.get(0).isDisplayed());
+
     }
 
     @Test
