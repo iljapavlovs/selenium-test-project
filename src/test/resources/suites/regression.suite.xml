@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Regression">
+
+    <test name="smoke">
+        <groups>
+            <run>
+                <include name="regression"/>
+            </run>
+        </groups>
+
+        <packages>
+            <package name="com.mycompany.selenium"/>
+        </packages>
+    </test>
+
+</suite>
