@@ -47,7 +47,7 @@ public class SScomTest {
         WebElement languageBarRU = driver.findElement(By.cssSelector("[title='По-русски']"));
         languageBarRU.click();
 
-        WebElement searchBar = driver.findElement(By.cssSelector("[title='Искать объявления']"));
+        WebElement searchBar = driver.findElement(By.cssSelector("#main_table a[href*='search']"));
         searchBar.click();
 
         WebElement searchField = driver.findElement(By.name("txt"));
