@@ -35,6 +35,7 @@ public class AdsSiteTest {
     public void changeLanguage() throws Exception {
         WebElement langSwitcher = driver.findElement(By.cssSelector(".menu_lang .a_menu"));
         langSwitcher.click();
+
         assertTrue(driver.getTitle().contentEquals("Объявления - SS.COM"));
     }
 
@@ -42,8 +43,10 @@ public class AdsSiteTest {
     public void openSearchPage() throws Exception {
         WebElement searchLink = driver.findElement(By.cssSelector(".menu_main .a_menu[href='/ru/search/']"));
         searchLink.click();
+
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ptxt")));
+
         assertTrue(driver.getTitle().contains("Поиск объявлений"));
     }
 
@@ -51,14 +54,19 @@ public class AdsSiteTest {
     public void searchPhrase() throws Exception {
         WebElement searchInput = driver.findElement(By.id("ptxt"));
         searchInput.sendKeys("Компьютеры");
+
         Select sectionDropdown = new Select(driver.findElement(By.name("cid_0")));
         sectionDropdown.selectByVisibleText("Электротехника");
+
         Select cityDropdown = new Select(driver.findElement(By.id("s_region_select")));
         cityDropdown.selectByVisibleText("Рига");
+
         Select periodDropdown = new Select(driver.findElement(By.cssSelector(".in1s[name='pr']")));
         periodDropdown.selectByValue("30");
+
         WebElement searchButton = driver.findElement(By.id("sbtn"));
         searchButton.click();
+
         List<WebElement> resultsList = driver.findElements((By.cssSelector(".d1")));
         assertTrue(resultsList.size() > 0);
     }
@@ -67,6 +75,7 @@ public class AdsSiteTest {
     public void sortByPrice() throws Exception {
         WebElement priceLink = driver.findElement(By.cssSelector(".a18"));
         priceLink.click();
+
         List<WebElement> pricesList = driver.findElements((By.cssSelector(".amopt")));
         String pricePrv = "0 E";
         for (WebElement element : pricesList) {
