@@ -1,5 +1,6 @@
 package com.mycompany.selenium.pageobjects;
 
+import com.mycompany.selenium.enums.Location;
 import com.mycompany.selenium.helpers.WebDriverHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -51,11 +52,11 @@ public class SearchPage {
         WebDriverHelper.selectDropdownValueByText(subDivision2Dropdown, division2ToSelect);
     }
 
-    public void selectRegion(String regionToSelect) {
-        WebDriverHelper.selectDropdownValueByText(regionDropdown, regionToSelect);
+    public void selectRegion(Location location) {
+        WebDriverHelper.selectDropdownValueByValue(regionDropdown, location.getLocation());
     }
 
     public void submitSearch() {
-        submitButton.click();
+        submitButton.submit();
     }
 }

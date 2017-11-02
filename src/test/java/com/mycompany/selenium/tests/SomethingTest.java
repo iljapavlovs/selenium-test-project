@@ -1,6 +1,7 @@
 package com.mycompany.selenium.tests;
 
 
+import com.mycompany.selenium.enums.Location;
 import com.mycompany.selenium.pageobjects.SearchPage;
 import com.mycompany.selenium.pageobjects.TopMenuBar;
 import org.openqa.selenium.WebDriver;
@@ -52,7 +53,8 @@ public class SomethingTest {
         searchPage.searchForPhrase("Компьютер");
         searchPage.selectSubDivision("Электротехника");
         searchPage.selectSubDivision2("Компьютеры, оргтехника");
-        searchPage.selectRegion("Рига");
+        //searchPage.selectRegion("Рига");
+        searchPage.selectRegion(Location.RIGA);
         searchPage.submitSearch();
         Thread.sleep(5000);
 

@@ -10,4 +10,9 @@ public class WebDriverHelper {
         select.selectByVisibleText(visibleText);
 
     }
+
+    public static void selectDropdownValueByValue(WebElement dropdownElement, String value) {
+        Select select = new Select(dropdownElement);
+        select.selectByValue(value);
+    }
 }
