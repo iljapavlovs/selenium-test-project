@@ -19,7 +19,7 @@ import static org.testng.AssertJUnit.assertEquals;
 
 public class SomethingTest {
     /**
-     * TAKEAWAYS:
+     TAKEAWAYS:
      * *Page Object* methods should be named as from Business logic perspective, more abstract -
      * avoid naming methods as "clickOnSaveButton()"
      * it helps to make your test more readable and more maintainable
@@ -34,6 +34,7 @@ public class SomethingTest {
      * If a method stays on the same page, then return the same Page Object ("return this").
      * This will make your tests more "fluent" (https://en.wikipedia.org/wiki/Fluent_interface)
      * Keep folder structure clean
+     *
      */
 
 
