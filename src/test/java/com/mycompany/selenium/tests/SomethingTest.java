@@ -50,6 +50,10 @@ public class SomethingTest {
         topMenuBar.goToSearch();
         SearchPage searchPage = new SearchPage(driver);
         searchPage.searchForPhrase("Компьютер");
+        searchPage.selectSubDivision("Электротехника");
+        searchPage.selectSubDivision2("Компьютеры, оргтехника");
+        Thread.sleep(5000);
+
 
     }
 
