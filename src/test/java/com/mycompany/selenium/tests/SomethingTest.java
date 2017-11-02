@@ -3,6 +3,7 @@ package com.mycompany.selenium.tests;
 
 import com.mycompany.selenium.enums.Location;
 import com.mycompany.selenium.pageobjects.SearchPage;
+import com.mycompany.selenium.pageobjects.SearchResultPage;
 import com.mycompany.selenium.pageobjects.TopMenuBar;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,6 +12,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class SomethingTest {
 
@@ -56,8 +58,10 @@ public class SomethingTest {
         //searchPage.selectRegion("Рига");
         searchPage.selectRegion(Location.RIGA);
         searchPage.submitSearch();
-        Thread.sleep(5000);
-
+        //Thread.sleep(5000);
+        SearchResultPage searchResultPage = new SearchResultPage(driver);
+        assertTrue(searchResultPage.getSearchResultElementsCount() > 0);
+        assertTrue(searchResultPage.searchResultElements.get(0).isDisplayed());
 
     }
 
