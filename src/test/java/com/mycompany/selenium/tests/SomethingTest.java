@@ -19,22 +19,22 @@ import static org.testng.AssertJUnit.assertEquals;
 
 public class SomethingTest {
     /**
-     TAKEAWAYS:
-     * *Page Object* methods should be named as from Business logic perspective, more abstract -
-     * avoid naming methods as "clickOnSaveButton()"
-     * it helps to make your test more readable and more maintainable
-     * Page Object returns some info about the page (e.g. new page object, text from page, a boolean result for some check, etc. -
-     * never a WebElement (but there might be some exceptions - like with `searchResultElements`)
-     * Put explicit wait into Page Object Constructor
-     * in order to wait until page ready state
-     * or you can use Loadable Component pattern
-     * Repeating actions in multiple Page Objects should be put into separate helper class (as with Select example)
-     * Make method static so that there will be no need to initialize an instance
-     * Recommended to return other Page Objects in a method which end up going to another page
-     * If a method stays on the same page, then return the same Page Object ("return this").
-     * This will make your tests more "fluent" (https://en.wikipedia.org/wiki/Fluent_interface)
-     * Keep folder structure clean
-     *
+    TAKEAWAYS:
+    * *Page Object* methods should be named as from Business logic perspective, more abstract -
+        * avoid naming methods as "clickOnSaveButton()"
+        * it helps to make your test more readable and more maintainable
+    * Page Object returns some info about the page (e.g. new page object, text from page, a boolean result for some check, etc. -
+        * never a WebElement (but there might be some exceptions - like with `searchResultElements`)
+    * Put explicit wait into Page Object Constructor
+        * in order to wait until page ready state
+        * or you can use Loadable Component pattern
+    * Repeating actions in multiple Page Objects should be put into separate helper class (as with Select example)
+        * Make method static so that there will be no need to initialize an instance
+    * Recommended to return other Page Objects in a method which end up going to another page
+    * If a method stays on the same page, then return the same Page Object ("return this").
+        * This will make your tests more "fluent" (https://en.wikipedia.org/wiki/Fluent_interface)
+    * Keep folder structure clean
+    *
      */
 
 
