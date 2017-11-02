@@ -43,9 +43,14 @@ public class SearchPage {
         searchCriteriaInput.sendKeys(phraseToSearchFor);
     }
 
-    public void selectSubDivision(String divisionToSelect) {
-        //subDivisionDropdown.click();
+//    public void selectSubDivision(String divisionToSelect) {
+//        //subDivisionDropdown.click();
+//        WebDriverHelper.selectDropdownValueByText(subDivisionDropdown, divisionToSelect);
+//    }
+
+    public SearchPage selectSubDivision(String divisionToSelect) {
         WebDriverHelper.selectDropdownValueByText(subDivisionDropdown, divisionToSelect);
+        return this;
     }
 
     public void selectSubDivision2(String division2ToSelect) {
