@@ -52,6 +52,8 @@ public class SomethingTest {
         searchPage.searchForPhrase("Компьютер");
         searchPage.selectSubDivision("Электротехника");
         searchPage.selectSubDivision2("Компьютеры, оргтехника");
+        searchPage.selectRegion("Рига");
+        searchPage.submitSearch();
         Thread.sleep(5000);
 
 
