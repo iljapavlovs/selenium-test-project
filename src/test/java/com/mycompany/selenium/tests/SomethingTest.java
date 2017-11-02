@@ -1,7 +1,8 @@
 package com.mycompany.selenium.tests;
 
 
-import com.mycompany.selenium.pageobejcts.TopMenuBar;
+import com.mycompany.selenium.pageobjects.SearchPage;
+import com.mycompany.selenium.pageobjects.TopMenuBar;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -47,7 +48,8 @@ public class SomethingTest {
         TopMenuBar topMenuBar = new TopMenuBar(driver);
         topMenuBar.changeLanguage();
         topMenuBar.goToSearch();
-
+        SearchPage searchPage = new SearchPage(driver);
+        searchPage.searchForPhrase("Компьютер");
 
     }
 

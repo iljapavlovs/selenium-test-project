@@ -1,10 +1,11 @@
-package com.mycompany.selenium.pageobejcts;
+package com.mycompany.selenium.pageobjects;
 
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TopMenuBar {
@@ -24,12 +25,13 @@ public class TopMenuBar {
     public TopMenuBar(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
-//        wait.until(ExpectedConditions.elementToBeClickable(changeLanguageLink));
+        wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.elementToBeClickable(changeLanguageLink));
     }
 
     public void changeLanguage() {
 
-//        wait.until(ExpectedConditions.elementToBeClickable(changeLanguageLink));
+        wait.until(ExpectedConditions.elementToBeClickable(changeLanguageLink));
         changeLanguageLink.click();
     }
 
