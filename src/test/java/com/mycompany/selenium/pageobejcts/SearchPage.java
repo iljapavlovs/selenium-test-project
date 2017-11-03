@@ -43,6 +43,9 @@ public class SearchPage {
     @FindBy(id = "sbtn")
     private WebElement searchButton;
 
+    @FindBy(xpath = "//*[contains(text(),'Искомое слово') or contains(text(),'Meklējamais vārds')]")
+    private WebElement searchCriteriaTitle;
+
 
     public SearchPage(WebDriver driver) {
         this.driver = driver;
@@ -80,6 +83,7 @@ public class SearchPage {
     }
 
     public SearchResultPage performSearch() {
+        searchCriteriaTitle.click();
         this.searchButton.click();
         return new SearchResultPage(driver);
     }
