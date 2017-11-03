@@ -1,4 +1,4 @@
-package com.mycompany.selenium.helpers;
+package com.mycompany.selenium.core;
 
 
 import org.openqa.selenium.WebElement;

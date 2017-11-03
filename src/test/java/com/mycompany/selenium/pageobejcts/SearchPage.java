@@ -1,26 +1,24 @@
 package com.mycompany.selenium.pageobejcts;
 
 
+import com.mycompany.selenium.core.WebDriverHelper;
 import com.mycompany.selenium.enums.Location;
 import com.mycompany.selenium.enums.TimePeriod;
-import com.mycompany.selenium.helpers.WebDriverHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /*
 Page Object should expose the "interface" to the Page
 (contains behavior - methods to interact with the page)
  */
 
-public class SearchPage {
+public class SearchPage extends Page{
     private static final String SEARCH_CRITERIA_INPUT_LOCATOR = "ptxt";
-    private WebDriver driver;
-    private WebDriverWait wait;
+
+
     @FindBy(id = SEARCH_CRITERIA_INPUT_LOCATOR)
     private WebElement searchCriteriaInput;
 
@@ -48,9 +46,9 @@ public class SearchPage {
 
 
     public SearchPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-        wait = new WebDriverWait(driver, 5);
+
+        super(driver);
+
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(SEARCH_CRITERIA_INPUT_LOCATOR)));
     }
 
