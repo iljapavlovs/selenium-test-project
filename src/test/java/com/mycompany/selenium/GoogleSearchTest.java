@@ -9,15 +9,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import sun.security.krb5.internal.crypto.Des;
 
 import java.net.URL;
-import java.rmi.Remote;
 
 import static org.junit.Assert.assertTrue;
 
@@ -36,10 +33,10 @@ public class GoogleSearchTest{
 
     @Before
     public void setUp() throws Exception {
-//        driver = new ChromeDriver();
-//        driver = new FirefoxDriver();
+
 
         DesiredCapabilities cap = DesiredCapabilities.firefox();
+        //REMOTEWEBDRIVER!
         driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), cap);
 
         driver.get("http://www.google.com");
