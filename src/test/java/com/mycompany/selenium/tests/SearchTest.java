@@ -34,12 +34,15 @@ public class SearchTest extends TestBase {
     * Keep folder structure clean
     * Dont hardcode data which may change with time - e.g. testing envs, test users, explicit waits, etc
         * parametrize it via external files - like config file for env URL or JSON for users data;
-    * More general Fixtures Can Be Put to BaseTest class  and your Test class should extend the Base Test class.
+    * More general Fixtures can be put to BaseTest class and your Test class should extend the Base Test class.
         * This way test class only has testing code without any preparation and teardown code
     * DriverFactory - Hide the logic of initializing an object inside the factory
     * Common methods, fields, initilization can be moved to parent Page class for all page objects
-     *
-    *
+    * Ensure that tests can be run in parallel in order to save time on test execution
+    * Run parallel tests on Selenium Grid
+        * In this case - instantiate RemoteWebDriver class instead of a Browser driver concrete implementation (e.g. Chromedriver)
+    * Take screenshots on failures - this way it will be much easier to investigate the issues with tests
+    * Use informative report like Allure2
      */
 
 
