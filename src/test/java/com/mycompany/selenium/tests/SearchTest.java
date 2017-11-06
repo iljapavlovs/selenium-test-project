@@ -32,6 +32,13 @@ public class SearchTest extends TestBase {
     * If a method stays on the same page, then return the same Page Object ("return this").
         * This will make your tests more "fluent" (https://en.wikipedia.org/wiki/Fluent_interface)
     * Keep folder structure clean
+    * Dont hardcode data which may change with time - e.g. testing envs, test users, explicit waits, etc
+        * parametrize it via external files - like config file for env URL or JSON for users data;
+    * More general Fixtures Can Be Put to BaseTest class  and your Test class should extend the Base Test class.
+        * This way test class only has testing code without any preparation and teardown code
+    * DriverFactory - Hide the logic of initializing an object inside the factory
+    * Common methods, fields, initilization can be moved to parent Page class for all page objects
+     *
     *
      */
 
