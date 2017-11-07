@@ -44,7 +44,7 @@ Afterwards, following was added:
 
 
 ---
-###In Russian
+### In Russian
 ##### Task 1:
 1. Открыть браузер и развернуть на весь экран.
 2. Зайти на ss.com.
