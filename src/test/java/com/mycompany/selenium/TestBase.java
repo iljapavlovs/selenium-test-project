@@ -17,7 +17,6 @@ import static com.mycompany.selenium.constants.Constants.APP_URL;
 @Listeners(ScreenshotListener.class)
 public class TestBase {
 
-    private static List<DriverFactory> webDriverThreadPool = Collections.synchronizedList(new ArrayList<DriverFactory>());
     private static ThreadLocal<DriverFactory> driverFactory;
     protected WebDriver driver;
 
@@ -30,9 +29,7 @@ public class TestBase {
         driverFactory = new ThreadLocal<DriverFactory>() {
             @Override
             protected DriverFactory initialValue() {
-                DriverFactory driverFactory = new DriverFactory();
-                webDriverThreadPool.add(driverFactory);
-                return driverFactory;
+                return new DriverFactory();
             }
         };
 
@@ -44,10 +41,6 @@ public class TestBase {
 
     @AfterMethod(alwaysRun = true)
     public void closeDriverObjects() {
-        for (DriverFactory driverFactory : webDriverThreadPool) {
-            driverFactory.quitDriver();
-        }
+        driverFactory.get().quitDriver();
     }
-
-
 }

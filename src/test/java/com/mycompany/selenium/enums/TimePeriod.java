@@ -2,10 +2,8 @@ package com.mycompany.selenium.enums;
 
 
 public enum TimePeriod {
-
     ALL_PERIOD("0"),
     LAST_MONTH("30");
-
 
     private String dayCount;
 

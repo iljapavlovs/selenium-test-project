@@ -27,10 +27,10 @@ public enum DriverType implements DriverSetup {
         }
 
         public WebDriver getWebDriverObject(DesiredCapabilities capabilities) {
-//            System.setProperty("webdriver.firefox.bin", "C:\\tools\\Firefox\\firefox.exe");
+            System.setProperty("webdriver.firefox.bin", "C:\\tools\\Firefox\\firefox.exe");
 
-        System.setProperty("webdriver.gecko.driver", "src/test/resources/drivers/geckodriver-v0.17.0-win32/geckodriver.exe");
-        return new FirefoxDriver(capabilities);
+            System.setProperty("webdriver.gecko.driver", "src/test/resources/drivers/geckodriver-v0.17.0-win32/geckodriver.exe");
+            return new FirefoxDriver(capabilities);
         }
     },
     CHROME {
@@ -48,11 +48,11 @@ public enum DriverType implements DriverSetup {
 //            ChromeOptions options = new ChromeOptions();
 //            options.setBinary("C:\\Users\\s1eamk\\AppData\\Local\\Microsoft\\AppV\\Client\\Integration\\590455D7-2D2E-48A6-9412-DD2A08B56F24\\Root\\VFS\\ProgramFilesX86\\Google\\Chrome\\Application\\chrome.exe");
 
-            Map<String, Object> chromeOptions = new HashMap<String, Object>();
-            chromeOptions.put("binary", "C:\\Users\\s1eamk\\AppData\\Local\\Microsoft\\AppV\\Client\\Integration\\590455D7-2D2E-48A6-9412-DD2A08B56F24\\Root\\VFS\\ProgramFilesX86\\Google\\Chrome\\Application\\chrome.exe");
-            capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+//            Map<String, Object> chromeOptions = new HashMap<String, Object>();
+//            chromeOptions.put("binary", "C:\\Users\\s1eamk\\AppData\\Local\\Microsoft\\AppV\\Client\\Integration\\590455D7-2D2E-48A6-9412-DD2A08B56F24\\Root\\VFS\\ProgramFilesX86\\Google\\Chrome\\Application\\chrome.exe");
+//            capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
 
-            return new ChromeDriver(capabilities);
+            return new ChromeDriver();
         }
     },
     IE {

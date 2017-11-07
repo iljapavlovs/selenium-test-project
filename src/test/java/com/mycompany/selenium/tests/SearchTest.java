@@ -54,7 +54,6 @@ public class SearchTest extends TestBase {
                 .switchLangTo(Language.RU)
                 .goToSearch();
 
-
         SearchResultPage searchResultPage = searchPage.searchForPhrase("Компьютер")
                 .selectSubDivision("Электротехника")
                 .selectCategory("Компьютеры, оргтехника")
