@@ -18,10 +18,8 @@ Page Object should expose the "interface" to the Page
 public class SearchPage extends Page{
     private static final String SEARCH_CRITERIA_INPUT_LOCATOR = "ptxt";
 
-
     @FindBy(id = SEARCH_CRITERIA_INPUT_LOCATOR)
     private WebElement searchCriteriaInput;
-
 
     // assume that locator is not dynamic
     @FindBy(name = "cid_0")
@@ -46,9 +44,7 @@ public class SearchPage extends Page{
 
 
     public SearchPage(WebDriver driver) {
-
         super(driver);
-
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(SEARCH_CRITERIA_INPUT_LOCATOR)));
     }
 

@@ -12,8 +12,6 @@ Page Object should expose the "interface" to the Page
  */
 
 public class TopMenuBar extends Page{
-    //    @FindBy(css = ".menu_lang .a_menu")
-//    private WebElement changeLanguageLink;
     @FindBy(css = "[href='/ru/']")
     public WebElement switchLangToRuLink;
     @FindBy(css = "[href='/lv/']")
@@ -50,7 +48,6 @@ public class TopMenuBar extends Page{
     public String getPageHeaderHeadText() {
         return pageHeaderHead.getText();
     }
-
 
     public SearchPage goToSearch() {
         searchLink.click();
